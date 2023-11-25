@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 
 function Header({title}) {
     return <h1>{title ? title : 'Default title'}</h1>
@@ -15,18 +16,24 @@ export default function HomePage() {
     }
 
     return (
-        <div>
-            <Header title="Test" />
-            <ul>
-                {names.map((name) => (
-                    <li key={name}>
-                        {name}
-                    </li>
-                ))}
-            </ul>
+        <>
+            <Head>
+                <title>Create Next App</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <div>
+                <Header title="Test" />
+                <ul>
+                    {names.map((name) => (
+                        <li key={name}>
+                            {name}
+                        </li>
+                    ))}
+                </ul>
 
-            <button onClick={handleClick}>Like ({likes})</button>
-            <Link href="/posts/first-post">First post</Link>
-        </div>
+                <button onClick={handleClick}>Like ({likes})</button>
+                <Link href="/posts/first-post">First post</Link>
+            </div>
+        </>
     )
 }
